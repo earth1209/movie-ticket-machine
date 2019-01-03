@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
- 
-    $.ajax({url: "http://www.mocky.io/v2/5bab559f3000006800a68762", success: function(result){
-     
-     for(var i=0;i<=result.total;i++){
-      $("body").append('<img src='+result.data[i].image+'>');
-     }
-    }});
-  });
+<style>
+.price{
+display: none;
+}
 
-</script>
+
+</style>
+
 </head>
 <body>
+<div class="body-list" >
+หนัง
+</div>
 
+<button id="click">black</button>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+   
+      $.ajax({url: "http://www.mocky.io/v2/5bab559f3000006800a68762", success: function(result){
+       
+       for(var i=0;i<=result.total;i++){
+        $(".body-list").append('<div><img src='
+        +result.data[i].image+'>'
+        +'<br>'+result.data[i].name
+        +'<br>'+result.data[i].price
+        +"<div class='price'>"+result.data[i].shot_description+"</div>"
+       
+        +'</div>'
+        +'<br>');
+   }
+      }});
 
+    $(".body-list").on('click','div',function(){
+$(this).siblings().hide();
+$('.price').show();
+    });
+    $("#click").click(function(){
+   $('.price').hide();
+  });
+  });
 
-<button>Get External Content</button>
-
+  </script>
+  
 </body>
 </html>
