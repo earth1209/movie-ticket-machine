@@ -5,8 +5,8 @@
 <script>
 $(document).ready(function(){
   $("button").click(function(){
-    $.ajax({url: "demo_test.txt", success: function(result){
-      $("#div1").html(result);
+    $.ajax({url: "http://www.mocky.io/v2/5bab559f3000006800a68762", success: function(result){
+      $("#div1").html('<img src='+result.data[0].image+'>');
     }});
   });
 });
