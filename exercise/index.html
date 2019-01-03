@@ -4,17 +4,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $("button").click(function(){
+ 
     $.ajax({url: "http://www.mocky.io/v2/5bab559f3000006800a68762", success: function(result){
-      $("#div1").html('<img src='+result.data[0].image+'>');
+     
+     for(var i=0;i<=result.total;i++){
+      $("body").append('<img src='+result.data[i].image+'>');
+     }
     }});
   });
-});
+
 </script>
 </head>
 <body>
 
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
 
 <button>Get External Content</button>
 
