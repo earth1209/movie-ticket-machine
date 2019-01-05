@@ -3,71 +3,110 @@
 
 <head>
   <style>
-    .price {
+    .price,
+    #click,
+    data {
       display: none;
     }
-.pic{
-  width: 300px;
-  height: 350px;
-}
-.body-list,.rol{
-  display: inline-block;
-}
-.body-list{
-  border: solid black  5px;
-  width: 1000px;
- 
-  
-}
-body{
-  text-align: center;
-}
 
- </style>
+    .pic {
+      width: 300px;
+      height: 350px;
+    }
+
+    .body-list,
+    .rol {
+      display: inline-block;
+    }
+
+    .body-list {
+      /* border: solid black 0.5px; */
+      width: 1000px;
+      border: 0px;
+
+    }
+
+    body {
+      text-align: center;
+      background-color: #D2D2FF;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: hotpink;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+
+    .button:hover {
+      background-color: skyblue
+    }
+
+    .button:active {
+      background-color: goldenrod;
+      box-shadow: 0 5px goldenrod;
+      transform: translateY(4px);
+    }
+  </style>
 
 </head>
 
 <body>
-  
-  <div class="body-list">
-  
-  </div>
 
-  <button id="click">black</button>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
 
-      $.ajax({
-        url: "http://www.mocky.io/v2/5bab559f3000006800a68762",
-        success: function (result) {
 
-          for (var i = 0; i <= result.total; i++) {
-            $(".body-list").append('<div class="rol">'+
-            '<img class="pic" src= ' +result.data[i].image + '>' +
-              '<br>' + result.data[i].name +
-              '<br>' + result.data[i].price +
-              "<div class='price'>" + result.data[i].shot_description + "</div>"
+ <div class="body-list">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
 
-              +
-              '</div>' 
+        $.ajax({
+          url: "http://www.mocky.io/v2/5bab559f3000006800a68762",
+          success: function (result) {
+
+            for (var i=0;i<= result.total;i++){
+     $(".body-list").append('<div class="rol">'+
+                "<div>"+'<img class="pic"src='+ result.data[i].image +'>'+"</div>"+
+                '<div class ="data">'+ result.data[i].name +'</div>' +
+                '<div class="pay">' + result.data[i].price + '</div>' +
+                "<div class='price'>" + result.data[i].shot_description + "</div>"+
+               '</div>'
               );
+            }
           }
-        }
-      });
+        });
 
-      $(".body-list").on('click', 'div', function () {
-        $(this).siblings().hide();
-        $('.price').show();
-      });
-      $("#click").click(function () {
-     
-        $('.body-list div').show();
-        $('.price').hide();
-      });
-    });
-  </script>
+        $(".body-list").on('click', 'div', function () {
 
+          $(this).siblings().hide();
+          $('.data').hide();
+          $('.pay').hide();
+          $('.price').show();
+          $('#click').show();
+
+        });
+        $("#click").click(function () {
+
+          $('.body-list div').show();
+
+          $('.price').hide();
+          $('#click').hide();
+        });
+      });
+    </script>
+
+
+  </div>
+  <br>
+  <button id="click" class="button">Home</button>
 </body>
 
 </html>
