@@ -7,6 +7,12 @@
     <!-- Custom styles for this template -->
     <!-- <link href="css/half-slider.css" rel="stylesheet"> -->
   <style>
+   
+/* #click{
+  margin:500px;
+  width:800px;
+} */
+
     .price,
     #click,
     data {
@@ -101,7 +107,13 @@
   
 
  <div class="body-list">
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU'
+        crossorigin='anonymous'>
     <script>
       $(document).ready(function () {
 
@@ -110,34 +122,39 @@
           success: function (result) {
 
             for (var i=0;i<= result.total;i++){
-     $(".body-list").append('<div class="rol">'+'<h6>'+
-                "<div>"+'<img class="pic"src='+ result.data[i].image +'>'+"</div>"+
+     $(".body-list").append('<div class="rol">'+"<h6>"+
+                "<div>"+'<a href="detail.html?id='+result.data[i].id +'">'+
+                '<img class="pic"src='+ result.data[i].image +'>'+"</div>"+
                 '<div class ="data">'+ result.data[i].name +'</div>'+
                 '<div class="pay">Price :'+ result.data[i].price +'</div>' +
-                "<div class='price'>"+"<h6>"+ result.data[i].shot_description +'</h6>'+"</div>"+'</h6>'+
+                "<div class='price'>"+"<h6>"+ result.data[i].shot_description +'</h6>'+"</div>"+
+                "<div class='price'>Status :"+result.data[i].now_showing+"</div>"
+                +'</a>'
+                +
                '</div>'
               );
             }
           }
         });
 
-        $(".body-list").on('click', 'div', function () {
+        // $(".body-list").on('click', 'div', function () {
+          
 
-          $(this).siblings().hide();
-          $('.data').hide();
-          $('.pay').hide();
-          $('.price').show();
-          $('#click').show();
+          // $(this).siblings().hide();
+          // $('.data').hide();
+          // $('.pay').hide();
+          // $('.price').show();
+          // $('#click').show();
 
         });
-        $("#click").click(function () {
+      //   $("#click").click(function () {
 
-          $('.body-list div').show();
+      //     $('.body-list div').show();
 
-          $('.price').hide();
-          $('#click').hide();
-        });
-      });
+      //     $('.price').hide();
+      //     $('#click').hide();
+      //   });
+      //  });
     </script>
 
 

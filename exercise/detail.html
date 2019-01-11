@@ -2,17 +2,31 @@
 <html>
 
 <head>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU'
+        crossorigin='anonymous'>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!-- <link href="css/half-slider.css" rel="stylesheet"> -->
   <style>
-    /* .price,
-    #click,
-    data {
-      display: none;
+    .card {
+  box-shadow:  4px 8px 0 rgba(0,0,0,0);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(255,0,0,5);
+}
+/* #click{
+  margin:500px;
+  width:800px;
+} */
+
     
-    } */
     h6{
     
       color: #fff;
@@ -29,91 +43,105 @@
     }
 
     .body-list {
-   
-      width: 100px;
+      /* border: solid black 0.5px; */
+      width: 1000px;
       border: 0px;
 
     }
     body {
       text-align: center;
-      background-color:tomato;
+      background-color: 	#FF9933;
     }
 
-   
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: hotpink;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+    }
+
+    .button:hover {
+      background-color: skyblue
+    }
+
+    .button:active {
+      background-color: goldenrod;
+      box-shadow: 0 5px goldenrod;
+      transform: translateY(4px);
+    }
  </style>
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="#">Movie major</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">All Detail</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-<br>
-<br>
 
-
-  
-
- <div class="body-list">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-      $(document).ready(function () {
-
-        $.ajax({
-          url: "http://www.mocky.io/v2/5bab559f3000006800a68762",
-          success: function (result) {
-
-            for (var i=0;i<= result.total;i++){
-     $(".body-list").append('<div class="rol">'+'<h6>'+
-                "<div>"+'<img class="pic"src='+ result.data[i].image +'>'+"</div>"+
-              
-                "<div class='price'>"+"<h6>"+ result.data[i].shot_description +'</h6>'+"</div>"+'</h6>'+
-               '</div>'
-              );
-            }
-          }
-        });
-
-        $(".body-list").on('click', 'div', function () {
-
-        //   $(this).siblings().hide();
-          $('.data').show();
-         
-
-        });
-        
-        
-   
-      });
-    </script>
-
+  <div class = "body-list">
 
 
   </div>
 
+
+
+    <script>  
+        $(document).ready(function () {  
+            var param = GetParameterValues('id')-1;  
+            function GetParameterValues(param) {  
+                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');  
+                for (var i = 0; i < url.length; i++) {  
+                    var urlparam = url[i].split('=');  
+                    if (urlparam[0] == param) {  
+                        return urlparam[1];  
+                    }  
+                }  
+            }  
+        
+        
+        $.ajax({
+          url: "http://www.mocky.io/v2/5bab559f3000006800a68762",
+          success: function (result) {
+
+           
+     $(".body-list").html(
+                '<div class="rol">'+"<h6>"+"<div>"+
+                '<img class="pic"src='+ result.data[param].image +'>'+"</div>"+
+                '<div class ="data">'+ result.data[param].name +'</div>'+
+                '<div class="pay">Price :'+ result.data[param].price +'</div>' +
+                "<div class='price'>"+"<h6>"+ result.data[param].shot_description +'</h6>'+"</div>"+
+                "<div class='price'>Status :"+result.data[param].now_showing+"</div>"+
+               '</div>'
+              );
+            
+          }
+        });
+      });
+        // $(".body-list").on('click', 'div', function () {
+          
+
+        //   // $(this).siblings().hide();
+        //   // $('.data').hide();
+        //   // $('.pay').hide();
+        //   // $('.price').show();
+        //   // $('#click').show();
+
+        // });
+        // $("#click").click(function () {
+
+        //   $('.body-list div').show();
+
+        //   $('.price').hide();
+        //   $('#click').hide();
+        // });
+      
+
+    </script> 
 </body>
 
 </html>
