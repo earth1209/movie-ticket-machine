@@ -9,27 +9,22 @@
         crossorigin='anonymous'>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <!-- <link href="css/half-slider.css" rel="stylesheet"> -->
+    
   <style>
-    .card {
-  box-shadow:  4px 8px 0 rgba(0,0,0,0);
-  transition: 0.3s;
-  width: 40%;
-}
+  
+.a{
+  
+  /* border: 1px solid black; */
+  /* display: bl */
+  margin: 0px 350px 0px 350px;
+  background-color: rgb(116, 126, 125);
+  }
 
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(255,0,0,5);
-}
-/* #click{
-  margin:500px;
-  width:800px;
-} */
 
     
     h6{
     
-      color: #fff;
+      color: rgb(253, 252, 249);
     }
    
 
@@ -82,6 +77,34 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">Movie major</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">All Detail</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+<br>
+<br>
 
   <div class = "body-list">
 
@@ -110,36 +133,19 @@
 
            
      $(".body-list").html(
-                '<div class="rol">'+"<h6>"+"<div>"+
+                '<div class="rol">'+"<div>"+
                 '<img class="pic"src='+ result.data[param].image +'>'+"</div>"+
-                '<div class ="data">'+ result.data[param].name +'</div>'+
-                '<div class="pay">Price :'+ result.data[param].price +'</div>' +
-                "<div class='price'>"+"<h6>"+ result.data[param].shot_description +'</h6>'+"</div>"+
-                "<div class='price'>Status :"+result.data[param].now_showing+"</div>"+
+               
+             
+                "<div class='price a'>"+"<h6>"+ result.data[param].shot_description +'</h6>'+"</div>"+
+                "<div class='price'>"+'<h3>Status :'+result.data[param].now_showing+"</div>"+
                '</div>'
               );
             
           }
         });
       });
-        // $(".body-list").on('click', 'div', function () {
-          
-
-        //   // $(this).siblings().hide();
-        //   // $('.data').hide();
-        //   // $('.pay').hide();
-        //   // $('.price').show();
-        //   // $('#click').show();
-
-        // });
-        // $("#click").click(function () {
-
-        //   $('.body-list div').show();
-
-        //   $('.price').hide();
-        //   $('#click').hide();
-        // });
-      
+     
 
     </script> 
 </body>
